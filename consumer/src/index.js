@@ -13,10 +13,6 @@ async function start() {
   await consumer.connect();
   await consumer.subscribe({ topic });
 
-  consumer.on("consumer.connect", () => {
-    console.log("ready");
-  });
-
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
       // const prefix = `${topic}[${partition} | ${message.offset}] / ${
